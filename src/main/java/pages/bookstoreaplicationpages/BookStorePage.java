@@ -1,12 +1,8 @@
-package pages.bookStoreApplicationPage;
+package pages.bookstoreaplicationpages;
 
-import pages.commonPage.BasePage;
+import org.openqa.selenium.*;
+import pages.commonpages.BasePage;
 import lombok.Data;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -26,6 +22,9 @@ public class BookStorePage extends BasePage {
         super(driver, driverWait);
     }
 
+    /**
+     * Click on "Login" button
+     */
     public WebElement getLogin(){
         return getDriver().findElement(login);
     }
@@ -34,10 +33,16 @@ public class BookStorePage extends BasePage {
         getLogin().click();
     }
 
+    /**
+     * Find logout button and confirm is Visible
+     */
     public boolean isVisibleLogoutButton() {
         return getDriver().findElement(logout).isDisplayed();
     }
 
+    /**
+     * Click on "Git Pocket Guide" book
+     */
    public WebElement getBook(){
         return getDriver().findElement(bookGitPocketGuide);
     }
@@ -46,14 +51,20 @@ public class BookStorePage extends BasePage {
         getBook().click();
     }
 
+    /**
+     * Get the text from the book name and compare it with the expected results
+     */
     public String isVisibleBookName() {
         return getDriver().findElement(bookName).getText();
     }
 
+    /**
+     * Click on "Add To Your Collection" button
+     */
     public WebElement getAddToYourCollection(){
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(addToYourCollectionButton);
     }
 
@@ -61,10 +72,13 @@ public class BookStorePage extends BasePage {
         getAddToYourCollection().click();
     }
 
+    /**
+     * Click on "Profile" button
+     */
     public WebElement getProfileButton(){
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(profileButton);
     }
 

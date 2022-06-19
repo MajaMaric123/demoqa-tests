@@ -24,7 +24,7 @@ public class WebTablesPage extends BasePage {
     private By tableRow = By.xpath("//*[@class='rt-tbody']/div[4]/div");
     private By deleteButton = By.xpath("//*[@id=\"delete-record-3\"]");
     private By editRecordButton = By.id("edit-record-1");
-    private By fullNameInTable = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[1]");
+    private By firstNameInTable = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[1]");
 
 
     public WebTablesPage(WebDriver driver, WebDriverWait driverWait) {
@@ -32,7 +32,7 @@ public class WebTablesPage extends BasePage {
     }
 
     public WebElement getAddNewRecordButton() {
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
         return getDriver().findElement(addNewRecordButton);
     }
 
@@ -89,7 +89,7 @@ public class WebTablesPage extends BasePage {
     }
 
     /**
-     * Take the text from the output message and compare it with the expected results
+     * Get text from the output message and compare it with the expected results
      */
     public boolean checkIfNewRecordIsPartOfTheTable(String firstName, String lastName, String email, String age, String salary, String department) {
         List<WebElement> newRow = getTableRow().findElements(By.tagName("div"));
@@ -106,14 +106,8 @@ public class WebTablesPage extends BasePage {
         return false;
     }
 
-
-    public String confirmationFullNameInTable() {
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        return getDriver().findElement(fullNameInTable).getText();
-    }
-
     public WebElement getDeleteButton() {
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
         return getDriver().findElement(deleteButton);
     }
 
@@ -152,7 +146,16 @@ public class WebTablesPage extends BasePage {
      * Edit first name for the first record in the table
      */
     public void editRecordFirstName(String firstname) {
-        clearField(this.firstNameField);
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        clearField(firstNameField);
         getFirstNameField().sendKeys(firstname);
+    }
+
+    /**
+     * Confirm that first name for the first record in the table is changed
+     */
+    public String confirmationFirstNameInTable() {
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        return getDriver().findElement(firstNameInTable).getText();
     }
 }

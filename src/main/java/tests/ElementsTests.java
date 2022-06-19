@@ -1,15 +1,16 @@
-package tests.elementsTests;
+package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import tests.BaseTests;
 
 import java.time.Duration;
 
-public class Tests extends BaseTests {
+public class ElementsTests extends BaseTests {
 
-    //Verify that valid output message appears after input valid credentials in Text Box form
-    @Test(priority = 1)
+    /**
+     * Verify that valid output message appears after input valid credentials in Text Box form in Text Box section
+     */
+    @Test
     public void verifyConfirmationMessageAppearsAfterFillingTextBoxForm() {
         getHomePage().clickElementsCard();
         getElementsPage().clickTextBoxButton();
@@ -22,44 +23,52 @@ public class Tests extends BaseTests {
         Assert.assertEquals(getTextBoxPage().confirmationPermanentAddressOutput(), "Permananet Address :Danila Kisa 20");
     }
 
-    //Verify that all check box are selected after selecting Home check box in Check Box section
-    @Test(priority = 2)
+    /**
+     * Verify that all check box are selected after selecting Home check box in Check Box section
+     */
+    @Test
     public void verifyConfirmationMessageAppearsAfterSelectingHomeCheckBox() {
-        getHomePage().clickElementsCard();
-        getElementsPage().clickCheckBoxButton();
+        clickCheckBoxInElementsCard();
         getCheckBoxPage().clickHomeCheckBox();
-        Assert.assertEquals(getCheckBoxPage().confirmationResults(), "You have selected :\n" + "home\n" + "desktop\n" + "notes\n" + "commands\n" + "documents\n" + "workspace\n" + "react\n" + "angular\n" + "veu\n" + "office\n" + "public\n" + "private\n" + "classified\n" + "general\n" + "downloads\n" + "wordFile\n" + "excelFile");
+        Assert.assertEquals(getCheckBoxPage().confirmationResults(), "You have selected :\n"
+                + "home\n" + "desktop\n" + "notes\n" + "commands\n" + "documents\n" + "workspace\n"
+                + "react\n" + "angular\n" + "veu\n" + "office\n" + "public\n" + "private\n"
+                + "classified\n" + "general\n" + "downloads\n" + "wordFile\n" + "excelFile");
     }
 
-    //Verify that notes check box is selected after click on Notes check box in Check Box section
-    @Test(priority = 3)
+    /**
+     * Verify that notes check box is selected after click on Notes check box in Check Box section
+     */
+    @Test
     public void verifyConfirmationMessageAppearsAfterSelectingNotesCheckBox() {
-        getHomePage().clickElementsCard();
-        getElementsPage().clickCheckBoxButton();
+        clickCheckBoxInElementsCard();
         getCheckBoxPage().clickHomePath();
         getCheckBoxPage().clickDesktopPath();
         getCheckBoxPage().clickNotesCheckBox();
         Assert.assertEquals(getCheckBoxPage().confirmationResults(), "You have selected :\n" + "notes");
     }
 
-    //Verify that "Yes" and "Impressive" radio buttons can be selected in Radio Buttons section
-    @Test(priority = 4)
+    /**
+     * Verify that "Yes" and "Impressive" radio buttons can be selected in Radio Buttons section
+     */
+    @Test
     public void verifyThatUserGetsConfirmationMessageAfterClickOnRadioButton() {
         getHomePage().clickElementsCard();
         getElementsPage().clickRadioButton();
         getRadioButtonPage().clickOnYesRadioButton();
-        Assert.assertEquals(getRadioButtonPage().confirmationMessageForYesRadioButton(), "Yes");
+        Assert.assertEquals(getRadioButtonPage().confirmationMessageForRadioButton(), "Yes");
         Assert.assertFalse(getRadioButtonPage().isImpressiveRadioButtonSelected());
         getRadioButtonPage().clickOnImpressiveRadioButton();
-        Assert.assertEquals(getRadioButtonPage().confirmationMessageForImpressiveRadioButton(), "Impressive");
+        Assert.assertEquals(getRadioButtonPage().confirmationMessageForRadioButton(), "Impressive");
         Assert.assertFalse(getRadioButtonPage().isYesRadioButtonSelected());
     }
 
-    //Verify that new record exists in the table after filling add new record form in Web Tables section
-    @Test(priority = 5)
+    /**
+     * Verify that new record exists in the table after filling add new record form in Web Tables section
+     */
+    @Test
     public void verifyNewRecordExistsInTableAfterFillingAddNewRecordForm() {
-        getHomePage().clickElementsCard();
-        getElementsPage().clickWebTablesButton();
+        clickWebTablesInElementsCard();
         getWebTablesPage().clickAddNewRecordButton();
         getWebTablesPage().inputAddNewRecordForm("Maja", "Maric", "maja@gmail.com", "25", "150000", "IT sector");
         getWebTablesPage().clickSubmitButton();
@@ -67,38 +76,54 @@ public class Tests extends BaseTests {
                 "25", "150000", "IT sector"));
     }
 
-    //Verify that record is deleted from Table after click on Delete button in Web Tables section
-    @Test(priority = 6)
-    public void verifyRecordIsDeletedAfterClickOnDeleteButton(){
-        getHomePage().clickElementsCard();
-        getElementsPage().clickWebTablesButton();
+    /**
+     * Verify that record is deleted from Table after click on Delete button in Web Tables section
+     */
+    @Test
+    public void verifyRecordIsDeletedAfterClickOnDeleteButton() {
+        clickWebTablesInElementsCard();
         getWebTablesPage().clickDeleteButton();
         Assert.assertTrue(getWebTablesPage().checkIfRowIsEmpty());
     }
 
-    //Verify that confirmation message appears after double-click on Double Click Me button in Buttons section
-    @Test(priority = 7)
+    /**
+     * Verify that first record in the table is edited after click on Edit button and send keys in Web Tables section
+     */
+    @Test
+    public void verifyRecordIsEditedAfterClickOnEditButton() {
+        clickWebTablesInElementsCard();
+        getWebTablesPage().clickEditRecordButton();
+        getWebTablesPage().editRecordFirstName("Maja");
+        getWebTablesPage().clickSubmitButton();
+        Assert.assertEquals(getWebTablesPage().confirmationFirstNameInTable(), "Maja");
+    }
+
+    /**
+     * Verify that confirmation message appears after double-click on Double Click Me button in Buttons section
+     */
+    @Test
     public void verifyConfirmationMessageAppearsAfterDoubleClickOnDoubleClickMeButton() {
-        getHomePage().clickElementsCard();
-        getElementsPage().clickButtonsButton();
+        clickButtonsInElementsCard();
         getButtonsPage().clickDoubleClickMeButton();
         Assert.assertEquals(getButtonsPage().confirmationDoubleClickMessage(), "You have done a double click");
     }
 
-    //Verify that confirmation message appears after right click on Right Click Me button in Buttons section
-    @Test(priority = 8)
+    /**
+     * Verify that confirmation message appears after right click on Right Click Me button in Buttons section
+     */
+    @Test
     public void verifyConfirmationMessageAppearsAfterRightClickOnRightClickMeButton() {
-        getHomePage().clickElementsCard();
-        getElementsPage().clickButtonsButton();
+        clickButtonsInElementsCard();
         getButtonsPage().clickRightClickMeButton();
         Assert.assertEquals(getButtonsPage().confirmationRightClickMessage(), "You have done a right click");
     }
 
-    //Verify that confirmation message appears after click on Click Me button in Buttons section
-    @Test(priority = 9)
+    /**
+     * Verify that confirmation message appears after click on Click Me button in Buttons section
+     */
+    @Test
     public void verifyConfirmationMessageAppearsAfterClickOnClickMeButton() {
-        getHomePage().clickElementsCard();
-        getElementsPage().clickButtonsButton();
+        clickButtonsInElementsCard();
         getButtonsPage().clickClickMeButton();
         Assert.assertEquals(getButtonsPage().confirmationDynamicClickMessage(), "You have done a dynamic click");
     }

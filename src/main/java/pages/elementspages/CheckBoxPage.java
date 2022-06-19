@@ -1,4 +1,4 @@
-package pages.elementsPage;
+package pages.elementspages;
 
 import pages.commonpages.BasePage;
 import lombok.Data;
@@ -68,7 +68,7 @@ public class CheckBoxPage extends BasePage {
     }
 
     /**
-     * Take the text from the output message and compare it with the expected results
+     * Get text from the output message and compare it with the expected results
      */
     public String confirmationResults() {
         return getDriver().findElement(results).getText();

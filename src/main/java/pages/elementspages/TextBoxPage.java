@@ -1,12 +1,8 @@
-package pages.elementsPage;
+package pages.elementspages;
 
+import org.openqa.selenium.*;
 import pages.commonpages.BasePage;
 import lombok.Data;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -51,9 +47,9 @@ public class TextBoxPage extends BasePage {
      * Scroll down and find submit button
      */
     public WebElement getSubmitButton() {
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(submitButton);
     }
 
@@ -72,7 +68,7 @@ public class TextBoxPage extends BasePage {
     }
 
     /**
-     * Take the text from the output message and compare them with the expected results
+     * Get text from the output message and compare them with the expected results
      */
     public String confirmationFullNameOutput() {
         return getDriver().findElement(fullNameOutput).getText();

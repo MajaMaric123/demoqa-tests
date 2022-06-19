@@ -1,6 +1,6 @@
-package pages.bookStoreApplicationPage;
+package pages.bookstoreaplicationpages;
 
-import pages.commonPage.BasePage;
+import pages.commonpages.BasePage;
 import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +15,9 @@ public class ProfilePage extends BasePage {
         super(driver, driverWait);
     }
 
+    /**
+     * Get text from book name and compare it with the expected results
+     */
     public String confirmationBookName() {
         return getDriver().findElement(bookNameOnProfile).getText();
     }

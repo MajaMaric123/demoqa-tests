@@ -1,12 +1,8 @@
-package pages.alertsFrameWindowsPage;
+package pages.alertsframewindowspages;
 
-import pages.commonPage.BasePage;
+import org.openqa.selenium.*;
+import pages.commonpages.BasePage;
 import lombok.Data;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -20,10 +16,13 @@ public class AlertsFrameWindowsPage extends BasePage {
         super(driver, driverWait);
     }
 
+    /**
+     * Click on "Alerts" section
+     */
     public WebElement getAlerts(){
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(alerts);
     }
 

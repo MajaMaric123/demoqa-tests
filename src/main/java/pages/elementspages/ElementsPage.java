@@ -1,12 +1,8 @@
-package pages.elementsPage;
+package pages.elementspages;
 
+import org.openqa.selenium.*;
 import pages.commonpages.BasePage;
 import lombok.Data;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -29,8 +25,8 @@ public class ElementsPage extends BasePage {
      */
     public WebElement getTextBoxButton() {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(textBoxButton);
     }
 
@@ -43,8 +39,8 @@ public class ElementsPage extends BasePage {
      */
     public WebElement getCheckBoxButton() {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(checkBoxButton);
     }
 
@@ -57,8 +53,8 @@ public class ElementsPage extends BasePage {
      */
     public WebElement getRadioButton() {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(radioButton);
     }
 
@@ -71,8 +67,8 @@ public class ElementsPage extends BasePage {
      */
     public WebElement getWebTablesButton() {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(webTablesButton);
     }
 
@@ -85,8 +81,8 @@ public class ElementsPage extends BasePage {
      */
     public WebElement getButtonsButton() {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        Actions scrollDown = new Actions(getDriver());
-        scrollDown.sendKeys(Keys.PAGE_DOWN).build().perform();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("window.scrollBy(0,500)");
         return getDriver().findElement(buttonsButton);
     }
 

@@ -1,4 +1,4 @@
-package pages.elementsPage;
+package pages.elementspages;
 
 import pages.commonpages.BasePage;
 import lombok.Data;
@@ -37,7 +37,7 @@ public class ButtonsPage extends BasePage {
     }
 
     public WebElement getRightClickMeButton(){
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
         return getDriver().findElement(rightClickMeButton);
     }
 
@@ -62,7 +62,7 @@ public class ButtonsPage extends BasePage {
     }
 
     /**
-     * Take the text from the output message and compare it with the expected results
+     * Get the text from the output message and compare it with the expected results
      */
     public String confirmationDynamicClickMessage() {
         return getDriver().findElement(dynamicClickMessage).getText();

@@ -1,7 +1,8 @@
-package pages.commonPage;
+package pages.commonpages;
 
 import lombok.Getter;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,7 +15,6 @@ public class BasePage {
     private WebDriver driver;
     private WebDriverWait driverWait;
 
-    private static final String HOME_URL = "https://demoqa.com/";
 
     public BasePage() {
     }
@@ -40,10 +40,6 @@ public class BasePage {
         this.driverWait = driverWait;
     }
 
-    public void refreshPage(){
-        driver.navigate().refresh();
-    }
-
     public void skipAlert() {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
         wait.until(ExpectedConditions.alertIsPresent());
@@ -51,8 +47,8 @@ public class BasePage {
         alert.accept();
     }
 
-    public void openHomePage(){
-        driver.navigate().to(HOME_URL);
+    public void clearField(By locator) {
+        getDriver().findElement(locator).clear();
     }
 }
 

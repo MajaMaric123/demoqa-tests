@@ -1,6 +1,6 @@
-package pages.bookStoreApplicationPage;
+package pages.bookstoreaplicationpages;
 
-import pages.commonPage.BasePage;
+import pages.commonpages.BasePage;
 import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +18,9 @@ public class LoginPage extends BasePage {
         super(driver, driverWait);
     }
 
+    /**
+     * Click on "Login" button
+     */
     public WebElement getLoginButton(){
         return getDriver().findElement(loginButton);
     }

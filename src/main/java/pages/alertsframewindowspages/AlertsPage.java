@@ -1,6 +1,6 @@
-package pages.alertsFrameWindowsPage;
+package pages.alertsframewindowspages;
 
-import pages.commonPage.BasePage;
+import pages.commonpages.BasePage;
 import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +24,9 @@ public class AlertsPage extends BasePage {
         super(driver, driverWait);
     }
 
+    /**
+     * Click on "Click Button to see alert" click me button
+     */
     public WebElement getAlertButton(){
         return getDriver().findElement(alertButton);
     }
@@ -32,17 +35,24 @@ public class AlertsPage extends BasePage {
         getAlertButton().click();
     }
 
-    public void acceptAlertMessage(){
-        getDriver().switchTo().alert().accept();
-    }
-
     /**
-     * Verify is alert is presented
+     * Verify is alert presented
      */
     public boolean isVisibleAlertMessage() {
         return getDriverWait().until(ExpectedConditions.alertIsPresent()) != null;
     }
 
+    /**
+     * Accept alert after is visible
+     */
+    public void acceptAlertMessage(){
+        getDriver().switchTo().alert().accept();
+    }
+
+    /**
+     * Click on "On button click, alert will appear after 5 seconds"
+     * click me button
+     */
     public WebElement getTimerAlertButton(){
         return getDriver().findElement(timerAlertButton);
     }
@@ -51,11 +61,17 @@ public class AlertsPage extends BasePage {
         getTimerAlertButton().click();
     }
 
+    /**
+     * Verify is time alert presented
+     */
     public boolean isVisibleTimerAlertMessage() {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
         return getDriverWait().until(ExpectedConditions.alertIsPresent()) != null;
     }
 
+    /**
+     * Click on "On button click, confirm box will appear" click me button
+     */
     public WebElement getConfirmAlertButton(){
         return getDriver().findElement(confirmAlertButton);
     }
@@ -64,6 +80,16 @@ public class AlertsPage extends BasePage {
         getConfirmAlertButton().click();
     }
 
+    /**
+     *  Take the text from the output message and compare it with the expected results
+     */
+    public String confirmationConfirmResultsMessage() {
+        return getDriver().findElement(confirmButtonResult).getText();
+    }
+
+    /**
+     * Click on "On button click, prompt box will appear" click me button
+     */
     public WebElement getPromptButton(){
         return getDriver().findElement(promptAlertButton);
     }
@@ -78,13 +104,6 @@ public class AlertsPage extends BasePage {
     public void enterNameInAlert(String name){
         getDriver().switchTo().alert().sendKeys(name);
         getDriver().switchTo().alert().accept();
-    }
-
-    /**
-     *  Take the text from the output message and compare it with the expected results
-     */
-    public String confirmationConfirmResultsMessage() {
-        return getDriver().findElement(confirmButtonResult).getText();
     }
 
     /**

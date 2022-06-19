@@ -1,4 +1,4 @@
-**DEMOQA.COM TESTS**
+DEMOQA.COM TESTS
 
 demoqa.com is a basic demosite provided by toolsqa.com to learn and practice Selenium.
 
