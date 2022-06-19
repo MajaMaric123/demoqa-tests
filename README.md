@@ -1,3 +1,4 @@
+[TestPlanAndTestCase.xlsx](https://github.com/MajaMaric123/demoqa-tests/files/8935193/TestPlanAndTestCase.xlsx)
 **DEMOQA.COM TESTS**
 
 demoqa.com is a basic demosite provided by toolsqa.com to learn and practice Selenium.
