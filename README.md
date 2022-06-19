@@ -4,6 +4,7 @@ demoqa.com is a basic demosite provided by toolsqa.com to learn and practice Sel
 
 
 **Test Plan**
+
 More details about approach and features to be tested and are to find in 
 [TestPlanAndTestCase.xlsx](https://github.com/MajaMaric123/demoqa-tests/files/8935193/TestPlanAndTestCase.xlsx).
 
